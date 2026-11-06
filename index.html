@@ -19,20 +19,20 @@
             overflow: hidden;
             position: relative;
         }
-        /* Estilos de imagen de fondo - Noche Estrellada en tonos cálidos */
-        .stars-bg {
-            background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-                              radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-                              radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
-            background-size: 550px 550px, 350px 350px, 250px 250px;
-            background-position: 0 0, 40px 60px, 130px 270px;
-            opacity: 0.25;
+        
+        /* Configuración de tu Imagen de Fondo */
+        .artwork-bg {
+            background-image: url('fondo.jpg'); /* Asegúrate de que el nombre coincida con tu archivo */
+            background-size: cover;
+            background-position: center;
         }
-        /* Gradiente y superposiciones de color para cuidar la vista (Modo Cálido) */
-        .sky-filter {
-            background: linear-gradient(180deg, rgba(20, 15, 30, 0.95) 0%, rgba(35, 20, 45, 0.9) 40%, rgba(40, 25, 40, 0.85) 100%);
+
+        /* Capa de contraste y filtro de lectura cómoda */
+        .warm-overlay {
+            background: linear-gradient(180deg, rgba(20, 15, 25, 0.45) 0%, rgba(15, 10, 20, 0.65) 40%, rgba(10, 5, 15, 0.85) 100%);
             mix-blend-mode: multiply;
         }
+
         /* Filtro cálido de pantalla (Eye Comfort Shield) */
         .eye-comfort {
             position: absolute;
@@ -54,12 +54,12 @@
         <!-- Orificio de Cámara Infinity-O superior -->
         <div class="absolute top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-zinc-950 rounded-full z-50 border border-zinc-800"></div>
 
-        <!-- Fondo Noche Estrellada con filtro cálido -->
-        <div class="absolute inset-0 stars-bg z-0 pointer-events-none"></div>
-        <div class="absolute inset-0 sky-filter z-0 pointer-events-none"></div>
+        <!-- Capas de Fondo Ilustrado con Contraste Elevado -->
+        <div class="absolute inset-0 artwork-bg z-0"></div>
+        <div class="absolute inset-0 warm-overlay z-0"></div>
 
         <!-- Superior: Status Bar (One UI de Samsung) -->
-        <div class="z-10 flex justify-between items-center text-xs opacity-70 font-sans tracking-wide text-amber-200/80 px-2 mt-1">
+        <div class="z-10 flex justify-between items-center text-xs opacity-90 font-sans tracking-wide text-amber-100 px-2 mt-1 drop-shadow-md">
             <span>10:19 PM</span>
             <div class="flex items-center gap-1">
                 <i data-lucide="bell-off" class="w-3 h-3 text-amber-400"></i>
@@ -71,45 +71,45 @@
 
         <!-- Bloque Principal: Fecha, Hora y Cuenta Regresiva -->
         <div class="z-10 text-center flex flex-col items-center mt-6">
-            <span class="text-sm font-medium tracking-widest text-amber-200/80">Jueves, 5 de noviembre</span>
-            <h1 class="text-6xl font-light tracking-tighter text-amber-100 my-1 drop-shadow-md">22:19</h1>
+            <span class="text-sm font-semibold tracking-widest text-amber-100 drop-shadow-md">Jueves, 5 de noviembre</span>
+            <h1 class="text-6xl font-light tracking-tighter text-amber-50 my-1 drop-shadow-lg">22:19</h1>
             
             <!-- Contador de Cita Visa Consular -->
-            <div class="mt-4 bg-stone-900/80 backdrop-blur-md rounded-2xl p-4 border border-amber-900/40 w-full shadow-lg">
+            <div class="mt-4 bg-stone-900/90 backdrop-blur-md rounded-2xl p-4 border border-amber-900/50 w-full shadow-2xl">
                 <div class="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-amber-400">
                     <span class="inline-block w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
                     🇺🇸 ENTREVISTA VISA EE.UU.
                 </div>
                 <div class="text-2xl font-black text-amber-50 mt-1">Faltan 29 días • 04 Dic</div>
-                <p class="text-xs text-amber-300/80 mt-1 italic">«Graduación en Saint Leo + Disney & Miami (10 días)»</p>
+                <p class="text-xs text-amber-300/90 mt-1 italic font-medium">«Graduación en Saint Leo + Disney & Miami (10 días)»</p>
             </div>
         </div>
 
         <!-- Central: Practicar con Flashcards -->
         <div class="z-10 my-4 flex flex-col gap-3 w-full">
-            <div class="flex items-center justify-between px-1 text-xs font-bold text-amber-300/90 tracking-wider">
+            <div class="flex items-center justify-between px-1 text-xs font-bold text-amber-200 tracking-wider drop-shadow-md">
                 <span>📚 PRÁCTICA DIARIA</span>
                 <span id="semana-indicador" class="text-[10px] bg-amber-950 text-amber-400 px-2 py-0.5 rounded-full border border-amber-900/50">SEMANA 1</span>
             </div>
 
             <!-- Flashcard de entrenamiento -->
-            <div id="flashcard" class="bg-zinc-900/95 border border-amber-800/30 rounded-2xl p-4 shadow-xl flex flex-col justify-between min-h-[190px] transition-all duration-300">
+            <div id="flashcard" class="bg-zinc-950/95 border border-amber-800/40 rounded-2xl p-4 shadow-2xl flex flex-col justify-between min-h-[190px] transition-all duration-300">
                 <div class="flex justify-between items-start">
-                    <span class="text-[10px] bg-stone-800 text-amber-400 px-2 py-0.5 rounded font-bold uppercase tracking-wider border border-amber-900/20">OFICIAL CONSULAR</span>
+                    <span class="text-[10px] bg-stone-800 text-amber-400 px-2 py-0.5 rounded font-bold uppercase tracking-wider border border-amber-900/30">OFICIAL CONSULAR</span>
                     <!-- Botón de Audio interactivo -->
-                    <button onclick="reproducirAudio()" class="p-2 bg-amber-900/30 hover:bg-amber-900/50 active:scale-95 rounded-full text-amber-300 border border-amber-800/30 transition-all">
+                    <button onclick="reproducirAudio()" class="p-2 bg-amber-900/40 hover:bg-amber-900/60 active:scale-95 rounded-full text-amber-300 border border-amber-800/40 transition-all">
                         <i data-lucide="volume-2" class="w-4 h-4"></i>
                     </button>
                 </div>
                 <p id="pregunta-texto" class="text-base font-semibold text-amber-100 my-2 leading-relaxed">"Why are you traveling to the United States?"</p>
                 <div class="border-t border-zinc-800/80 pt-3 flex flex-col">
-                    <span class="text-[10px] text-amber-500 font-bold uppercase tracking-wider">Respuesta sugerida:</span>
+                    <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Respuesta sugerida:</span>
                     <p id="respuesta-texto" class="text-xs text-stone-300 mt-1 italic font-light">"To attend a graduation ceremony at Saint Leo University, and visit Disney and Miami for 10 days."</p>
                 </div>
             </div>
 
             <!-- Botón de navegación -->
-            <button onclick="siguienteTarjeta()" class="w-full py-2.5 bg-amber-800/40 hover:bg-amber-700/50 active:scale-95 text-amber-200 text-xs font-bold uppercase tracking-widest rounded-xl border border-amber-700/30 shadow transition-all">
+            <button onclick="siguienteTarjeta()" class="w-full py-2.5 bg-amber-900/60 hover:bg-amber-800/80 active:scale-95 text-amber-200 text-xs font-bold uppercase tracking-widest rounded-xl border border-amber-700/40 shadow-lg transition-all">
                 Siguiente Pregunta 🔄
             </button>
         </div>
@@ -118,36 +118,35 @@
         <div class="z-10 w-full flex flex-col items-center gap-4 mb-2">
             
             <!-- Notificación del Plan de Estudio Dinámica -->
-            <div class="flex items-start gap-3 bg-stone-900/85 backdrop-blur-md rounded-2xl p-3 border border-zinc-800/80 w-full text-left">
-                <div class="bg-amber-950 text-amber-400 p-2 rounded-xl border border-amber-900/45">
+            <div class="flex items-start gap-3 bg-stone-900/90 backdrop-blur-md rounded-2xl p-3 border border-zinc-800/80 w-full text-left shadow-xl">
+                <div class="bg-amber-950 text-amber-400 p-2 rounded-xl border border-amber-900/50">
                     <i data-lucide="calendar" class="w-4 h-4"></i>
                 </div>
                 <div class="flex-1 min-w-0">
                     <span id="notif-titulo" class="text-[10px] font-bold text-amber-400 uppercase tracking-wider">🔔 Plan de Hoy (Semana 1)</span>
                     <h4 id="notif-tema" class="text-xs font-bold text-amber-100 truncate mt-0.5">Propósito y Lazos Fuertes</h4>
-                    <p id="notif-desc" class="text-[10px] text-stone-400 truncate">Ensaya por qué vas y cuándo vuelves. Máximo 15 seg.</p>
+                    <p id="notif-desc" class="text-[10px] text-stone-300 truncate">Ensaya por qué vas y cuándo vuelves. Máximo 15 seg.</p>
                 </div>
             </div>
 
             <!-- Swipe de desbloqueo clásico Samsung -->
-            <div class="flex flex-col items-center opacity-85">
-                <i data-lucide="lock" class="w-4 h-4 text-amber-400 animate-bounce mb-1"></i>
-                <span class="text-[10px] uppercase tracking-widest text-amber-300 font-medium">Deslizar para desbloquear</span>
+            <div class="flex flex-col items-center opacity-90">
+                <i data-lucide="lock" class="w-4 h-4 text-amber-300 animate-bounce mb-1"></i>
+                <span class="text-[10px] uppercase tracking-widest text-amber-200 font-semibold drop-shadow-md">Deslizar para desbloquear</span>
             </div>
         </div>
 
         <!-- Acceso rápidos inferiores -->
-        <div class="absolute bottom-6 left-6 z-10 p-2.5 bg-stone-900/60 rounded-full border border-zinc-800">
+        <div class="absolute bottom-6 left-6 z-10 p-2.5 bg-stone-900/80 rounded-full border border-zinc-800">
             <i data-lucide="phone" class="w-4 h-4 text-amber-400"></i>
         </div>
-        <div class="absolute bottom-6 right-6 z-10 p-2.5 bg-stone-900/60 rounded-full border border-zinc-800">
+        <div class="absolute bottom-6 right-6 z-10 p-2.5 bg-stone-900/80 rounded-full border border-zinc-800">
             <i data-lucide="camera" class="w-4 h-4 text-amber-400"></i>
         </div>
 
     </div>
 
     <script>
-        // Set de preguntas y respuestas basadas en el viaje real de 10 días, Saint Leo, Disney y Miami
         const tarjetas = [
             {
                 pregunta: "Why are you traveling to the United States?",
@@ -161,88 +160,5 @@
             },
             {
                 pregunta: "What is your main destination and what will you do?",
-                respuesta: "My main destination is Saint Leo University for the ceremony, and then I will vacation for a few days in Orlando and Miami.",
-                semana: "SEMANA 1",
-                notif: {
-                    t: "🔔 Plan de Hoy (Semana 1)",
-                    tema: "Destinos en Florida",
-                    desc: "Prueba decir los nombres de Saint Leo, Orlando y Miami con soltura."
-                }
-            },
-            {
-                pregunta: "How long will you stay in the US?",
-                respuesta: "I will stay for exactly 10 days. I have my return ticket booked for the 10th day to go back to my job in Peru.",
-                semana: "SEMANA 2",
-                notif: {
-                    t: "🔔 Plan de Hoy (Semana 2)",
-                    tema: "Tiempos e Itinerario Exacto",
-                    desc: "Practica decir los 10 días exactos de viaje y su retorno."
-                }
-            },
-            {
-                pregunta: "Do you have permission from your job for this trip?",
-                respuesta: "Yes, I have approved paid leave from my employer for these 10 days, and I will resume my duties immediately after.",
-                semana: "SEMANA 2",
-                notif: {
-                    t: "🔔 Plan de Hoy (Semana 2)",
-                    tema: "Estabilidad Laboral y Arraigo",
-                    desc: "Menciona tu empleo y que regresarás inmediatamente a tus labores."
-                }
-            },
-            {
-                pregunta: "What is your exact itinerary for this 10-day trip?",
-                respuesta: "First, I'll attend the Saint Leo University graduation, then spend 4 days in Orlando for Disney, and 3 days in Miami.",
-                semana: "SEMANA 3",
-                notif: {
-                    t: "🔔 Plan de Hoy (Semana 3)",
-                    tema: "Practicar el Itinerario Detallado",
-                    desc: "Divide tus 10 días: Graduación, Disney y compras/playas en Miami."
-                }
-            }
-        ];
-
-        let indexActual = 0;
-
-        function siguienteTarjeta() {
-            const card = document.getElementById('flashcard');
-            card.classList.add('opacity-30', 'scale-95');
-            
-            setTimeout(() => {
-                indexActual = (indexActual + 1) % tarjetas.length;
-                
-                // Actualizar la interfaz
-                document.getElementById('pregunta-texto').textContent = `"${tarjetas[indexActual].pregunta}"`;
-                document.getElementById('respuesta-texto').textContent = `"${tarjetas[indexActual].respuesta}"`;
-                document.getElementById('semana-indicador').textContent = tarjetas[indexActual].semana;
-                
-                // Actualizar la notificación dinámica del plan semanal
-                document.getElementById('notif-titulo').textContent = tarjetas[indexActual].notif.t;
-                document.getElementById('notif-tema').textContent = tarjetas[indexActual].notif.tema;
-                document.getElementById('notif-desc').textContent = tarjetas[indexActual].notif.desc;
-                
-                card.classList.remove('opacity-30', 'scale-95');
-            }, 180);
-        }
-
-        // Función de voz integrada (Text to Speech)
-        function reproducirAudio() {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel(); // Parar audios en curso
-
-                const textoCompleto = tarjetas[indexActual].pregunta + ". " + tarjetas[indexActual].respuesta;
-                const locucion = new SpeechSynthesisUtterance(textoCompleto);
-                
-                locucion.lang = 'en-US'; // Inglés de Estados Unidos
-                locucion.rate = 0.85;    // Velocidad pausada idónea para repetición y comprensión
-
-                window.speechSynthesis.speak(locucion);
-            } else {
-                alert("La síntesis de voz no está soportada en este navegador.");
-            }
-        }
-
-        // Iniciar iconos en pantalla
-        lucide.createIcons();
-    </script>
-</body>
+                respuesta: "My main
 </html>
