@@ -41,7 +41,7 @@
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
         }
 
-        /* Tarjetas de notificación oscuras/semitransparentes (idénticas a la imagen) */
+        /* Tarjetas de notificación oscuras/semitransparentes */
         .glass-card-dark {
             background: rgba(30, 30, 35, 0.78) !important;
             backdrop-filter: blur(16px);
@@ -94,12 +94,12 @@
                 <div class="flex items-center justify-center gap-2 text-xs font-extrabold uppercase tracking-widest text-slate-700">
                     <span class="text-base">🇺🇸</span> ENTREVISTA VISA EE.UU.
                 </div>
-                <div class="text-2xl font-black text-slate-900 mt-1">Faltan 29 días • 04 Dic</div>
+                <div class="text-2xl font-black text-slate-900 mt-1">Faltan 28 días • 04 Dic</div>
                 <p class="text-xs text-slate-600 mt-1 italic font-medium">«Propósito: Saint Leo + Disney & Miami (10 días)»</p>
             </div>
         </div>
 
-        <!-- Notificaciones Oscuras / Flashcard Interactiva (Idéntica al screenshot) -->
+        <!-- Notificaciones Oscuras / Flashcard Interactiva -->
         <div class="z-10 my-auto flex flex-col gap-3 w-full">
             
             <!-- Notificación 1: Tarjeta Principal de Práctica con Audio -->
@@ -115,13 +115,13 @@
                 </div>
                 
                 <p id="pregunta-texto" class="text-xs text-slate-200 mt-2 font-medium">
-                    Repasa: <span class="font-bold text-white">"Why are you traveling to the US?"</span> | <span class="font-bold text-white">"Where will you stay?"</span>
+                    Repasa: <span class="font-bold text-white">"Why do you want to go to the United States?"</span>
                 </p>
 
                 <div class="border-t border-white/10 pt-2.5 mt-3 flex flex-col">
                     <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Respuesta modelo en inglés:</span>
                     <p id="respuesta-texto" class="text-xs text-slate-300 mt-0.5 italic font-light">
-                        "To attend a graduation ceremony at Saint Leo University, and visit Disney and Miami for 10 days."
+                        "I am traveling to attend a graduation ceremony at Saint Leo University, and I also plan to visit Disney in Orlando and Miami for 10 days."
                     </p>
                 </div>
             </div>
@@ -134,10 +134,10 @@
                 </div>
                 <div class="flex items-center gap-2 mt-0.5">
                     <span class="text-xs">📅</span>
-                    <span id="notif-titulo" class="text-xs font-bold text-white">SEMANA 1: Propósito de Viaje y Lazos</span>
+                    <span id="notif-titulo" class="text-xs font-bold text-white">SEMANA 1: Pregunta 1 de 3</span>
                 </div>
                 <p id="notif-desc" class="text-xs text-slate-300 truncate font-light">
-                    Repasa: 'Why are you traveling?' | 'Where will you stay?'
+                    Sé directo y conciso al explicar tu motivo de viaje (máx. 15-30 seg).
                 </p>
             </div>
 
@@ -166,50 +166,121 @@
     </div>
 
     <script>
+        // Banco balanceado con exactamente 3 preguntas clave por semana basadas en el PDF y tu itinerario real
         const tarjetas = [
+            // ================= SEMANA 1: Propósito del Viaje e Itinerario =================
             {
-                pregunta: '"Why are you traveling to the US?" | "Where will you stay?"',
+                pregunta: '"Why do you want to go to the United States?"',
                 respuesta: "I am traveling to attend a graduation ceremony at Saint Leo University, and I also plan to visit Disney in Orlando and Miami for 10 days.",
-                semana: "SEMANA 1: Propósito de Viaje",
+                semana: "SEMANA 1 (1/3): Propósito del Viaje",
                 notif: {
-                    t: "SEMANA 1: Propósito de Viaje y Lazos",
-                    desc: "Repasa: 'Why are you traveling?' | 'Where will you stay?'"
+                    t: "SEMANA 1: Pregunta 1 de 3",
+                    desc: "Sé conciso. Responde el motivo principal en los primeros 30 segundos."
                 }
             },
             {
-                pregunta: '"What is your main destination?" | "What will you visit?"',
-                respuesta: "My main destination is Saint Leo University for the ceremony, and then I will vacation in Orlando and Miami.",
-                semana: "SEMANA 1: Destinos en Florida",
+                pregunta: '"How long do you plan to stay in the United States?"',
+                respuesta: "I will stay for exactly 10 days. I have my round-trip flight booked and must return to my work in Peru immediately after.",
+                semana: "SEMANA 1 (2/3): Duración del Viaje",
                 notif: {
-                    t: "SEMANA 1: Destinos de Viaje",
-                    desc: "Repasa: 'Main destination' | 'Florida itinerary'"
-                }
-            },
-            {
-                pregunta: '"How long will you stay in the US?" | "When will you return?"',
-                respuesta: "I will stay for exactly 10 days. I have my return ticket booked for the 10th day to go back to work.",
-                semana: "SEMANA 2: Duración e Itinerario",
-                notif: {
-                    t: "SEMANA 2: Tiempo de Estancia",
-                    desc: "Repasa: '10 days stay' | 'Return ticket to Peru'"
-                }
-            },
-            {
-                pregunta: '"Do you have permission from your employer for this trip?"',
-                respuesta: "Yes, I have approved paid leave from my employer for these 10 days, and I will resume my duties immediately after.",
-                semana: "SEMANA 2: Empleo y Arraigo",
-                notif: {
-                    t: "SEMANA 2: Arraigo Laboral",
-                    desc: "Repasa: 'Approved paid leave' | 'Job responsibilities'"
+                    t: "SEMANA 1: Pregunta 2 de 3",
+                    desc: "Demuestra una fecha de retorno clara y definida."
                 }
             },
             {
                 pregunta: '"What is your exact 10-day travel itinerary?"',
-                respuesta: "First, I'll attend the Saint Leo University graduation, then spend 4 days in Orlando for Disney, and 3 days in Miami.",
-                semana: "SEMANA 3: Itinerario Detallado",
+                respuesta: "First, I'll attend the Saint Leo University graduation ceremony, then spend 4 days in Orlando visiting Disney parks, and 3 days in Miami.",
+                semana: "SEMANA 1 (3/3): Itinerario de Viaje",
                 notif: {
-                    t: "SEMANA 3: Distribución de Días",
-                    desc: "Repasa: 'Saint Leo graduation' | 'Orlando & Miami'"
+                    t: "SEMANA 1: Pregunta 3 de 3",
+                    desc: "Menciona tus destinos en orden: Saint Leo, Orlando y Miami."
+                }
+            },
+
+            // ================= SEMANA 2: Finanzas y Presupuesto =================
+            {
+                pregunta: '"Who will be sponsoring your trip?" / "How will you pay for it?"',
+                respuesta: "I am self-sponsoring my entire 10-day trip using my personal savings and employment income in Peru.",
+                semana: "SEMANA 2 (1/3): Financiamiento",
+                notif: {
+                    t: "SEMANA 2: Pregunta 1 de 3",
+                    desc: "Confirma que cubres tus propios gastos de viaje con tus ingresos."
+                }
+            },
+            {
+                pregunta: '"How much do you expect this trip to cost?"',
+                respuesta: "I estimate spending around 2,500 to 3,000 USD to cover flights, hotels, tickets, and daily expenses for the 10 days.",
+                semana: "SEMANA 2 (2/3): Presupuesto",
+                notif: {
+                    t: "SEMANA 2: Pregunta 2 de 3",
+                    desc: "Proporciona un presupuesto realista acorde a tus 10 días."
+                }
+            },
+            {
+                pregunta: '"Do you have a credit card or international banking access?"',
+                respuesta: "Yes, I carry active international credit cards and bank statements showing sufficient funds for my trip.",
+                semana: "SEMANA 2 (3/3): Solvencia Bancaria",
+                notif: {
+                    t: "SEMANA 2: Pregunta 3 de 3",
+                    desc: "Responde con seguridad sobre tus medios de pago."
+                }
+            },
+
+            // ================= SEMANA 3: Arraigo Laboral y Empleo =================
+            {
+                pregunta: '"What do you do for a living in your home country?"',
+                respuesta: "I work in Peru as a professional managing municipal infrastructure projects and technical evaluations for local government entities.",
+                semana: "SEMANA 3 (1/3): Ocupación Principal",
+                notif: {
+                    t: "SEMANA 3: Pregunta 1 de 3",
+                    desc: "Describe tu cargo y responsabilidad laboral de forma fluida."
+                }
+            },
+            {
+                pregunta: '"Can we see your leave of approval from your employer?"',
+                respuesta: "Yes, I have an official letter of approved vacation leave for 10 days from my employer, confirming my return date.",
+                semana: "SEMANA 3 (2/3): Permiso Laboral",
+                notif: {
+                    t: "SEMANA 3: Pregunta 2 de 3",
+                    desc: "Ten lista la constancia de permiso laboral firmada."
+                }
+            },
+            {
+                pregunta: '"Will you be working or doing business from the United States?"',
+                respuesta: "No, absolutely not. I am traveling exclusively for tourism and to attend the Saint Leo graduation ceremony during my vacation.",
+                semana: "SEMANA 3 (3/3): Intención No Inmigrante",
+                notif: {
+                    t: "SEMANA 3: Pregunta 3 de 3",
+                    desc: "Deja claro que NO realizarás trabajo ni negocios allá."
+                }
+            },
+
+            // ================= SEMANA 4: Lazos Familiares y Garantía de Retorno =================
+            {
+                pregunta: '"How can we be certain that you will return to your home country?"',
+                respuesta: "I have strong ties to Peru, including my permanent job, active public projects, family, and personal assets.",
+                semana: "SEMANA 4 (1/3): Lazos de Retorno",
+                notif: {
+                    t: "SEMANA 4: Pregunta 1 de 3",
+                    desc: "Enfatiza tus lazos laborales, familiares y patrimoniales en Perú."
+                }
+            },
+            {
+                pregunta: '"Do you have any relatives living in the United States?"',
+                respuesta: "No, I do not have close immediate family members residing in the United States.",
+                semana: "SEMANA 4 (2/3): Relaciones en EE.UU.",
+                notif: {
+                    t: "SEMANA 4: Pregunta 2 de 3",
+                    desc: "Responde con total verdad sobre familiares directos."
+                }
+            },
+            {
+                pregunta: '"What will you do upon your return to Peru?"',
+                respuesta: "I will immediately resume my duties at work and continue overseeing my scheduled public infrastructure projects.",
+                semana: "SEMANA 4 (3/3): Plan de Retorno",
+                notif: {
+                    t: "SEMANA 4: Pregunta 3 de 3",
+                    desc: "Reafirma tu retorno inmediato a tus actividades laborales."
                 }
             }
         ];
