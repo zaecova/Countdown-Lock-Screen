@@ -9,7 +9,6 @@
     <!-- Iconos Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* Proporciones de pantalla de un Samsung Galaxy A37 / One UI */
         .phone-container {
             max-width: 410px;
             height: 840px;
@@ -19,49 +18,56 @@
             overflow: hidden;
             position: relative;
         }
-         /* Configuración de tu Imagen de Fondo */
+        
+        /* Direct link to background image on GitHub */
         .artwork-bg {
-            background-image: url('fondo.jpg');
+            background-image: url('https://raw.githubusercontent.com/zaecova/Countdown-Lock-Screen/main/fondo.jpg');
             background-size: cover;
             background-position: center;
         }
-       
-        /* Capa de contraste y filtro de lectura cómoda */
-       .warm-overlay {
-            background: linear-gradient(180deg, rgba(20, 15, 25, 0.45) 0%, rgba(15, 10, 20, 0.65) 40%, rgba(10, 5, 15, 0.85) 100%);
-            mix-blend-mode: multiply;
+
+        /* Suave filtro para que el arte se vea claro y brillante */
+        .light-overlay {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(2px);
         }
-        
-        /* Filtro cálido de pantalla (Eye Comfort Shield) */
+
+        /* Estilo de Tarjetas Vidrio Transparente (Glassmorphism estilo One UI) */
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.65) !important;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
         .eye-comfort {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(245, 170, 80, 0.08);
+            background-color: rgba(245, 170, 80, 0.05);
             pointer-events: none;
             z-index: 100;
         }
     </style>
 </head>
-<body class="bg-zinc-950 flex justify-center items-center min-h-screen p-4 text-amber-50">
+<body class="bg-zinc-950 flex justify-center items-center min-h-screen p-4 text-slate-800">
 
-    <!-- Filtro general de confort ocular -->
     <div class="eye-comfort"></div>
 
-    <!-- Contenedor Estilo Samsung Galaxy A37 -->
-    <div class="phone-container bg-slate-950 relative flex flex-col justify-between p-6 select-none border-t-8 border-b-8 border-zinc-900">
+    <div class="phone-container bg-slate-100 relative flex flex-col justify-between p-6 select-none border-t-8 border-b-8 border-zinc-900">
         
-        <!-- Orificio de Cámara Infinity-O superior -->
+        <!-- Orificio de Cámara Infinity-O -->
         <div class="absolute top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-zinc-950 rounded-full z-50 border border-zinc-800"></div>
 
-        <!-- Capas de Fondo Ilustrado con Contraste Elevado -->
+        <!-- Fondo de Arte Ilustrado con Capa Clara -->
         <div class="absolute inset-0 artwork-bg z-0"></div>
-        <div class="absolute inset-0 warm-overlay z-0"></div>
+        <div class="absolute inset-0 light-overlay z-0"></div>
 
-        <!-- Superior: Status Bar (One UI de Samsung) -->
-        <div class="z-10 flex justify-between items-center text-xs opacity-90 font-sans tracking-wide text-amber-100 px-2 mt-1 drop-shadow-md">
+        <!-- Superior: Status Bar -->
+        <div class="z-10 flex justify-between items-center text-xs font-sans font-semibold tracking-wide text-slate-800 px-2 mt-1 drop-shadow">
             <span>10:19 PM</span>
             <div class="flex items-center gap-1">
-                <i data-lucide="bell-off" class="w-3 h-3 text-amber-400"></i>
+                <i data-lucide="bell-off" class="w-3 h-3 text-slate-700"></i>
                 <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
                 <span>5G</span>
                 <i data-lucide="battery" class="w-4 h-4 rotate-90 ml-0.5"></i>
@@ -69,78 +75,72 @@
         </div>
 
         <!-- Bloque Principal: Fecha, Hora y Cuenta Regresiva -->
-        <div class="z-10 text-center flex flex-col items-center mt-6">
-            <span class="text-sm font-semibold tracking-widest text-amber-100 drop-shadow-md">Jueves, 5 de noviembre</span>
-            <h1 class="text-6xl font-light tracking-tighter text-amber-50 my-1 drop-shadow-lg">22:19</h1>
+        <div class="z-10 text-center flex flex-col items-center mt-4">
+            <span class="text-sm font-semibold tracking-widest text-slate-700 drop-shadow">Jueves, 5 de noviembre</span>
+            <h1 class="text-6xl font-light tracking-tighter text-slate-900 my-1 drop-shadow-md">22:19</h1>
             
-            <!-- Contador de Cita Visa Consular -->
-            <div class="mt-4 bg-stone-900/90 backdrop-blur-md rounded-2xl p-4 border border-amber-900/50 w-full shadow-2xl">
-                <div class="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-amber-400">
+            <div class="mt-3 glass-card-light rounded-2xl p-4 w-full text-slate-800">
+                <div class="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-700">
                     <span class="inline-block w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
                     🇺🇸 ENTREVISTA VISA EE.UU.
                 </div>
-                <div class="text-2xl font-black text-amber-50 mt-1">Faltan 29 días • 04 Dic</div>
-                <p class="text-xs text-amber-300/90 mt-1 italic font-medium">«Graduación en Saint Leo + Disney & Miami (10 días)»</p>
+                <div class="text-2xl font-black text-slate-900 mt-1">Faltan 29 días • 04 Dic</div>
+                <p class="text-xs text-slate-700 mt-1 italic font-medium">«Graduación en Saint Leo + Disney & Miami (10 días)»</p>
             </div>
         </div>
 
         <!-- Central: Practicar con Flashcards -->
-        <div class="z-10 my-4 flex flex-col gap-3 w-full">
-            <div class="flex items-center justify-between px-1 text-xs font-bold text-amber-200 tracking-wider drop-shadow-md">
+        <div class="z-10 my-3 flex flex-col gap-3 w-full">
+            <div class="flex items-center justify-between px-1 text-xs font-bold text-slate-800 tracking-wider">
                 <span>📚 PRÁCTICA DIARIA</span>
-                <span id="semana-indicador" class="text-[10px] bg-amber-950 text-amber-400 px-2 py-0.5 rounded-full border border-amber-900/50">SEMANA 1</span>
+                <span id="semana-indicador" class="text-[10px] bg-amber-200 text-amber-900 font-extrabold px-2 py-0.5 rounded-full border border-amber-300">SEMANA 1</span>
             </div>
 
-            <!-- Flashcard de entrenamiento -->
-            <div id="flashcard" class="bg-zinc-950/95 border border-amber-800/40 rounded-2xl p-4 shadow-2xl flex flex-col justify-between min-h-[190px] transition-all duration-300">
+            <div id="flashcard" class="glass-card-light rounded-2xl p-4 flex flex-col justify-between min-h-[190px] transition-all duration-300">
                 <div class="flex justify-between items-start">
-                    <span class="text-[10px] bg-stone-800 text-amber-400 px-2 py-0.5 rounded font-bold uppercase tracking-wider border border-amber-900/30">OFICIAL CONSULAR</span>
-                    <!-- Botón de Audio interactivo -->
-                    <button onclick="reproducirAudio()" class="p-2 bg-amber-900/40 hover:bg-amber-900/60 active:scale-95 rounded-full text-amber-300 border border-amber-800/40 transition-all">
+                    <span class="text-[10px] bg-slate-800 text-white px-2 py-0.5 rounded font-bold uppercase tracking-wider">OFICIAL CONSULAR</span>
+                    <button onclick="reproducirAudio()" class="p-2 bg-slate-200 hover:bg-slate-300 active:scale-95 rounded-full text-slate-800 border border-slate-300 transition-all">
                         <i data-lucide="volume-2" class="w-4 h-4"></i>
                     </button>
                 </div>
-                <p id="pregunta-texto" class="text-base font-semibold text-amber-100 my-2 leading-relaxed">"Why are you traveling to the United States?"</p>
-                <div class="border-t border-zinc-800/80 pt-3 flex flex-col">
-                    <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Respuesta sugerida:</span>
-                    <p id="respuesta-texto" class="text-xs text-stone-300 mt-1 italic font-light">"To attend a graduation ceremony at Saint Leo University, and visit Disney and Miami for 10 days."</p>
+                <p id="pregunta-texto" class="text-base font-semibold text-slate-900 my-2 leading-relaxed">"Why are you traveling to the United States?"</p>
+                <div class="border-t border-slate-300/80 pt-2 flex flex-col">
+                    <span class="text-[10px] text-amber-800 font-bold uppercase tracking-wider">Respuesta sugerida:</span>
+                    <p id="respuesta-texto" class="text-xs text-slate-700 mt-0.5 italic font-medium">"To attend a graduation ceremony at Saint Leo University, and visit Disney and Miami for 10 days."</p>
                 </div>
             </div>
 
-            <!-- Botón de navegación -->
-            <button onclick="siguienteTarjeta()" class="w-full py-2.5 bg-amber-900/60 hover:bg-amber-800/80 active:scale-95 text-amber-200 text-xs font-bold uppercase tracking-widest rounded-xl border border-amber-700/40 shadow-lg transition-all">
+            <button onclick="siguienteTarjeta()" class="w-full py-2.5 bg-slate-800 hover:bg-slate-900 active:scale-95 text-white text-xs font-bold uppercase tracking-widest rounded-xl shadow-md transition-all">
                 Siguiente Pregunta 🔄
             </button>
         </div>
 
-        <!-- Inferior: Notificaciones de estudio semanal y Acceso de desbloqueo -->
-        <div class="z-10 w-full flex flex-col items-center gap-4 mb-2">
+        <!-- Inferior: Notificaciones y Desbloqueo -->
+        <div class="z-10 w-full flex flex-col items-center gap-3 mb-1">
             
-            <!-- Notificación del Plan de Estudio Dinámica -->
-            <div class="flex items-start gap-3 bg-stone-900/90 backdrop-blur-md rounded-2xl p-3 border border-zinc-800/80 w-full text-left shadow-xl">
-                <div class="bg-amber-950 text-amber-400 p-2 rounded-xl border border-amber-900/50">
+            <div class="flex items-start gap-3 glass-card-light rounded-2xl p-3 w-full text-left">
+                <div class="bg-blue-600 text-white p-2 rounded-xl">
                     <i data-lucide="calendar" class="w-4 h-4"></i>
                 </div>
                 <div class="flex-1 min-w-0">
-                    <span id="notif-titulo" class="text-[10px] font-bold text-amber-400 uppercase tracking-wider">🔔 Plan de Hoy (Semana 1)</span>
-                    <h4 id="notif-tema" class="text-xs font-bold text-amber-100 truncate mt-0.5">Propósito y Lazos Fuertes</h4>
-                    <p id="notif-desc" class="text-[10px] text-stone-300 truncate">Ensaya por qué vas y cuándo vuelves. Máximo 15 seg.</p>
+                    <span id="notif-titulo" class="text-[10px] font-bold text-blue-800 uppercase tracking-wider">🔔 Plan de Hoy (Semana 1)</span>
+                    <h4 id="notif-tema" class="text-xs font-bold text-slate-900 truncate mt-0.5">Propósito y Lazos Fuertes</h4>
+                    <p id="notif-desc" class="text-[10px] text-slate-700 truncate">Ensaya por qué vas y cuándo vuelves. Máximo 15 seg.</p>
                 </div>
             </div>
 
-            <!-- Swipe de desbloqueo clásico Samsung -->
-            <div class="flex flex-col items-center opacity-90">
-                <i data-lucide="lock" class="w-4 h-4 text-amber-300 animate-bounce mb-1"></i>
-                <span class="text-[10px] uppercase tracking-widest text-amber-200 font-semibold drop-shadow-md">Deslizar para desbloquear</span>
+            <div class="flex flex-col items-center opacity-85">
+                <i data-lucide="lock" class="w-4 h-4 text-slate-800 animate-bounce mb-0.5"></i>
+                <span class="text-[10px] uppercase tracking-widest text-slate-800 font-bold drop-shadow">Deslizar para desbloquear</span>
             </div>
         </div>
 
-        <!-- Acceso rápidos inferiores -->
-        <div class="absolute bottom-6 left-6 z-10 p-2.5 bg-stone-900/80 rounded-full border border-zinc-800">
-            <i data-lucide="phone" class="w-4 h-4 text-amber-400"></i>
+        <!-- Acceso rápidos -->
+        <div class="absolute bottom-6 left-6 z-10 p-2.5 glass-card-light rounded-full">
+            <i data-lucide="phone" class="w-4 h-4 text-slate-800"></i>
         </div>
-        <div class="absolute bottom-6 right-6 z-10 p-2.5 bg-stone-900/80 rounded-full border border-zinc-800">
-            <i data-lucide="camera" class="w-4 h-4 text-amber-400"></i>
+        <div class="absolute bottom-6 right-6 z-10 p-2.5 glass-card-light rounded-full">
+            <i data-lucide="camera" class="w-4 h-4 text-slate-800"></i>
         </div>
 
     </div>
@@ -159,5 +159,81 @@
             },
             {
                 pregunta: "What is your main destination and what will you do?",
-                respuesta: "My main
+                respuesta: "My main destination is Saint Leo University for the ceremony, and then I will vacation for a few days in Orlando and Miami.",
+                semana: "SEMANA 1",
+                notif: {
+                    t: "🔔 Plan de Hoy (Semana 1)",
+                    tema: "Destinos en Florida",
+                    desc: "Prueba decir los nombres de Saint Leo, Orlando y Miami con soltura."
+                }
+            },
+            {
+                pregunta: "How long will you stay in the US?",
+                respuesta: "I will stay for exactly 10 days. I have my return ticket booked for the 10th day to go back to my job in Peru.",
+                semana: "SEMANA 2",
+                notif: {
+                    t: "🔔 Plan de Hoy (Semana 2)",
+                    tema: "Tiempos e Itinerario Exacto",
+                    desc: "Practica decir los 10 días exactos de viaje y su retorno."
+                }
+            },
+            {
+                pregunta: "Do you have permission from your job for this trip?",
+                respuesta: "Yes, I have approved paid leave from my employer for these 10 days, and I will resume my duties immediately after.",
+                semana: "SEMANA 2",
+                notif: {
+                    t: "🔔 Plan de Hoy (Semana 2)",
+                    tema: "Estabilidad Laboral y Arraigo",
+                    desc: "Menciona tu empleo y que regresarás inmediatamente a tus labores."
+                }
+            },
+            {
+                pregunta: "What is your exact itinerary for this 10-day trip?",
+                respuesta: "First, I'll attend the Saint Leo University graduation, then spend 4 days in Orlando for Disney, and 3 days in Miami.",
+                semana: "SEMANA 3",
+                notif: {
+                    t: "🔔 Plan de Hoy (Semana 3)",
+                    tema: "Practicar el Itinerario Detallado",
+                    desc: "Divide tus 10 días: Graduación, Disney y compras/playas en Miami."
+                }
+            }
+        ];
+
+        let indexActual = 0;
+
+        function siguienteTarjeta() {
+            const card = document.getElementById('flashcard');
+            card.classList.add('opacity-30', 'scale-95');
+            
+            setTimeout(() => {
+                indexActual = (indexActual + 1) % tarjetas.length;
+                
+                document.getElementById('pregunta-texto').textContent = `"${tarjetas[indexActual].pregunta}"`;
+                document.getElementById('respuesta-texto').textContent = `"${tarjetas[indexActual].respuesta}"`;
+                document.getElementById('semana-indicador').textContent = tarjetas[indexActual].semana;
+                
+                document.getElementById('notif-titulo').textContent = tarjetas[indexActual].notif.t;
+                document.getElementById('notif-tema').textContent = tarjetas[indexActual].notif.tema;
+                document.getElementById('notif-desc').textContent = tarjetas[indexActual].notif.desc;
+                
+                card.classList.remove('opacity-30', 'scale-95');
+            }, 180);
+        }
+
+        function reproducirAudio() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const textoCompleto = tarjetas[indexActual].pregunta + ". " + tarjetas[indexActual].respuesta;
+                const locucion = new SpeechSynthesisUtterance(textoCompleto);
+                locucion.lang = 'en-US';
+                locucion.rate = 0.85;
+                window.speechSynthesis.speak(locucion);
+            } else {
+                alert("La síntesis de voz no está soportada en este navegador.");
+            }
+        }
+
+        lucide.createIcons();
+    </script>
+</body>
 </html>
