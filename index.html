@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#181411">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
     <title>Pantalla de Bloqueo - Visa USA Preparación</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -75,7 +79,7 @@
 
         <!-- Superior: Status Bar -->
         <div class="z-10 flex justify-between items-center text-xs font-sans font-semibold tracking-wide text-white px-2 mt-1 drop-shadow-md">
-            <span>10:19 PM</span>
+            <span id="hora-barra">--:--</span>
             <div class="flex items-center gap-1">
                 <i data-lucide="bell-off" class="w-3 h-3 text-white"></i>
                 <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
@@ -298,6 +302,9 @@
             }).format(ahora);
 
             document.getElementById('hora-actual').textContent = hora;
+            document.getElementById('hora-barra').textContent = new Intl.DateTimeFormat('en-US', {
+                hour: 'numeric', minute: '2-digit', hour12: true
+            }).format(ahora);
             document.getElementById('fecha-actual').textContent =
                 fechaHoy.charAt(0).toLocaleUpperCase('es-PE') + fechaHoy.slice(1);
 
@@ -347,6 +354,13 @@
         }
 
         lucide.createIcons();
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .catch(error => console.error('No se pudo registrar el service worker:', error));
+            });
+        }
     </script>
 </body>
 </html>
