@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Countdown Visa</string>
+    <string name="app_instructions">Para añadir la cuenta regresiva, vuelve a la pantalla de inicio, mantén pulsado un espacio vacío, toca Widgets y busca Countdown Visa.</string>
+    <string name="widget_name">Cuenta regresiva Visa</string>
+    <string name="widget_description">Días que faltan para el 4 de diciembre.</string>
+    <string name="widget_title">ENTREVISTA VISA EE.UU.</string>
+    <string name="widget_loading">Calculando…</string>
+    <string name="widget_date_placeholder">04 Dic</string>
+    <string name="interview_today">¡Es hoy!</string>
+    <string name="one_day_left">Falta 1 día</string>
+    <string name="days_left">Faltan %1$d días</string>
+    <string name="interview_date">• %1$s</string>
+</resources>
